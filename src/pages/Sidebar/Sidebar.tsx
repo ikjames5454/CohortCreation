@@ -9,7 +9,7 @@ const Sidebar = () => {
         <div>
         <SIdebarList/>
         </div>
-          <div className='coh px-[700px] text-5xl font-bold font-serif py-28 '>
+          <div className='coh px-[700px] text-5xl font-bold font-serif py-28 relative bottom-[750px] z-50'>
             Cohorts
           </div>
           <div className='coh px-[500px] font-bold font-serif py-22  justify-end hidden'>

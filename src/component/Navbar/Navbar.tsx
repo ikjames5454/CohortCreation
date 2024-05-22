@@ -8,24 +8,42 @@ import arrow from "../../asset/Images/Vector.png";
 import bg from "../../asset/Images/bg.png"
 import arrows from "../../asset/Images/arrow-left.png"
 import { useNavigate } from "react-router-dom";
+import { NavLink } from 'react-router-dom';
+
 
 
 const Navbar = () => {
   const navigate = useNavigate()
+  const activeLink = 'text-blue-500  border-b-8 pb-10 pl-4 pr-4 border-blue-500 rounded-b-left-35 rounded-b-right-X'
+  const normalLink = ''
 
   return (
-        <div className='c  sticky'>
-      <div className='px-5  top-0 py-[.8rem] flex justify-between items-center md:px-28 h-32'>
+        <div 
+        // className='c  sticky top-0 z-[100]'
+        >
+      <div className='px-5  top-0 py-[.8rem] flex justify-between items-center md:px-28 h-32 '>
         <div className='first flex items-center space-x-4'>
           <img className='image w-12' src={image} alt="" />
           <h1 className='name text-4xl font-extrabold text-[#008EEF]'>
             enum
           </h1>
         </div>
-        <div className='second md:flex space-x-28 text-3xl text-[#475661] font-bold'>
-          <h1 className='list hover:text-[#008EEF] cursor-pointer hover:border-b-4 hover:border-[#008EEF] hover:h-14 hover:cursor-pointer' onClick={()=>navigate('/home')}>Home</h1>
-          <h1 className='list hover:text-[#008EEF] cursor- hover:border-b-4 hover:border-[#008EEF] hover:h-14 hover:cursor-pointer' onClick={()=>navigate('/')}>Workspace</h1>
-          <h1 className='list hover:text-[#008EEF] cursor-pointer hover:border-b-4 hover:border-[#008EEF] hover:h-14 hover:cursor-pointern'>Resources Library</h1>
+        <div className='second md:flex space-x-28 text-3xl text-[#475661] font-bold mt-[65px]'>
+        <NavLink to="/home"
+         className={({ isActive }) => 
+         isActive ? 
+         activeLink: normalLink}>
+          <h1 className='list' >Home</h1></NavLink>
+          <NavLink to="/"
+         className={({ isActive }) => 
+         isActive ? 
+         activeLink: normalLink}>
+          <h1 className='list ' >Workspace</h1></NavLink>
+          <NavLink to="/res"
+         className={({ isActive }) => 
+         isActive ? 
+         activeLink: normalLink}>
+          <h1 className='list '>Resources Library</h1></NavLink>
         </div>
         <div className='icon  md:flex items-center space-x-14'>
           <IconButton>

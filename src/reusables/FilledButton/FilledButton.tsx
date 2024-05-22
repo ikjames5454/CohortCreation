@@ -9,7 +9,7 @@ interface FilledButtonProps {
     onClick?: () => void;
     border?: string;
     disabled?: boolean;
-    type?: "submit" | "reset" | "button"
+    type?: "submit" | "reset" | "button" 
 
     
 }
