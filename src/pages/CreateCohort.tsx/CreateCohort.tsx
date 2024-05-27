@@ -194,7 +194,7 @@ import style from "./CreateCohort.module.css";
 import image from "../../asset/Images/Group 596.png";
 import FilledButton from '../../reusables/FilledButton/FilledButton';
 import Modal from '../../asset/Modal/Modal';
-import { Formik, Form,ErrorMessage, Field } from 'formik'; 
+import { Formik, Form,ErrorMessage, Field,FieldProps, FormikProps} from 'formik'; 
 import DatePicker from './Date'; 
 import OutlineButton from '../../reusables/OutlineButton/OutlineButton';
 import ImageDropZone from './ImageDropZone';
@@ -247,7 +247,7 @@ const validationSchema = Yup.object().shape({
 
 export const CreateCohortModal: React.FC<{ isVisible: boolean; onClose: () => void }> = ({ isVisible, onClose }) => {
 
-  const users = useSelector((state: RootState) => state.users);
+  const users = useSelector((state: RootState) => state.users.users);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -347,10 +347,10 @@ export const CreateCohortModal: React.FC<{ isVisible: boolean; onClose: () => vo
                                     </label>
                                     <div className='date mt-3'>
                                         <Field name="endDate">
-                                            {() => (
+                                            {({field,form}: FieldProps) => (
                                                 <DatePicker
                                                     selectedDate={values.endDate}
-                                                    handleDateChange={(date) => setFieldValue('endDate', date)}
+                                                    handleDateChange={(date) =>form.setFieldValue('endDate', date)}
                                                 />
                                             )
                                             
@@ -396,7 +396,7 @@ const CreateCohort: React.FC = () => {
 
     return (
         <React.Fragment>
-            <div className='cont relative bottom-[380px] '>
+            <div className='cont relative bottom-[380px] hidden xl:block'>
                 <div className='main px-[1000px]'>
                     <div id={style.create} >
                         <img className='img w-[100%] mt-10' src={image} alt="" />

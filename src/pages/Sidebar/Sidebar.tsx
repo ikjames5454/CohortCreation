@@ -5,7 +5,7 @@ import Click from "../Click/ClickButton"
 
 const Sidebar = () => {
   return (
-    <div id="mainTwo" className='contain h-[600px]'>
+    <div id="mainTwo" className='contain h-[600px] hidden xl:block'>
         <div>
         <SIdebarList/>
         </div>

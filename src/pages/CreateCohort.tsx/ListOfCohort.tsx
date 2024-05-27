@@ -7,6 +7,9 @@ import { Modal } from '@mui/material';
 import Box from '@mui/material/Box';
 import { useNavigate } from "react-router-dom";
 import CohortsCard from './CohortsCard';
+import { searchUser } from '../../component/UsersReducers';
+import { useDispatch } from 'react-redux';
+import { Container, TextField, InputAdornment, Button, IconButton, MenuItem, Menu, Paper, useTheme, Typography, useMediaQuery, Card} from '@mui/material';
 
 const styles = {
   position: 'absolute',
@@ -28,6 +31,7 @@ interface FormValues {
 const cohorts = [1,1,1,1,1,1,1,1]
 
 const ListOfCohort = () => {
+  const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
 
   const handleOpenModal = (event: React.MouseEvent<HTMLDivElement>) => {
@@ -45,6 +49,7 @@ const ListOfCohort = () => {
 
   const search = (values: FormValues) => {
     console.log('Searching for:', values.search);
+    dispatch(searchUser(values.search));
   };
 
   const navigate = useNavigate();
@@ -94,7 +99,9 @@ const ListOfCohort = () => {
               type="button"
               onClick={() => setShowModal(true)}
             />
+
           </div >
+
           <div className='flex space-x-10 border border-solid border-black py-5 px-9 rounded-2xl text-center  '>
             <h1 className='text-3xl font-extrabold'>More Actions </h1>
             <div
